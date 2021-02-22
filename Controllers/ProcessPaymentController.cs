@@ -17,15 +17,12 @@ namespace filed.Controllers
     public class ProcessPaymentController : ControllerBase
     {
         private readonly IProcessPaymentService _processPaymentService;
-        private readonly ILogger<ProcessPaymentController> _logger;
         private readonly IMapper _mapper;
 
 
-        public ProcessPaymentController(ILogger<ProcessPaymentController> logger, IProcessPaymentService processPaymentService, IMapper mapper)
+        public ProcessPaymentController(IProcessPaymentService processPaymentService, IMapper mapper)
         {
-            _logger = logger;
             _mapper = mapper;
-
             _processPaymentService = processPaymentService;
         }
 
@@ -42,9 +39,9 @@ namespace filed.Controllers
                 var result = await _processPaymentService.ProcessPayment(newPayment);
                 return Ok("Payment is " + result.PaymentStatus);
             }
-            catch
+            catch(Exception e)
             {
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, "Internal server error " + e);
             }
 
         }

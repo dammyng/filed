@@ -9,6 +9,12 @@ A simple web service to process payment
     $ dotnet restore
 ```
 
+## Run test 
+
+```shell
+    $ dotnet test
+```
+
 ## Start application locally
 
 ```shell
@@ -50,11 +56,13 @@ A simple web service to process payment
 
 ## Limitations and Assumptions
 
-- A system in production should grant more flexibility with possible response
+- A system in production should grant more flexibility with possible response.
 
 - There could have more possible response than stated in the exercise documentation - the document does not provision for pending payments.
 
 - Payment gateway availability is returned at random.
 
 - Demo status are returned on every call.
+
+- This build uses in memory entity data storage.
  
